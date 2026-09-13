@@ -18,6 +18,13 @@ app.get('/', (req, res) => {
     res.send('Othello Server is running with Supabase!');
 });
 
+// 【追加】Pi Network セッション検証用API
+app.post('/api/verify-session', async (req, res) => {
+    const { accessToken } = req.body;
+    // （トークン検証ロジック）
+});
+
+
 // 【機能1】ゲーム終了時に、対戦回数を1増やす（または新規登録する）API
 app.post('/api/match-complete', async (req, res) => {
     const { username } = req.body;
