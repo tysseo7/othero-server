@@ -38,11 +38,13 @@ app.post('/api/match-complete', async (req, res) => {
             .from('leaderboard')
             .select('*')
             .eq('username', username)
-            .maybeSingle();
+            .select();
 
         if (selectError) throw selectError;
 
-        if (existingUser) {
+        //if (existingUser) {
+        if (existingUser && existingUser.length > 0) {
+
             // 2. すでに存在する場合は、match_countを+1して更新する
             const { data, error: updateError } = await supabase
                 .from('leaderboard')
