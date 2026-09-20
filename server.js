@@ -38,7 +38,7 @@ app.post('/api/match-complete', async (req, res) => {
             .from('leaderboard')
             .select('*')
             .eq('username', username)
-            .select();
+            //.select();
 
         if (selectError) throw selectError;
 
