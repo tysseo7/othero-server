@@ -48,7 +48,9 @@ app.post('/api/match-complete', async (req, res) => {
             // 2. すでに存在する場合は、match_countを+1して更新する
             const { data, error: updateError } = await supabase
                 .from('leaderboard')
-                .update({ match_count: existingUser.match_count + 1 })
+                //.update({ match_count: existingUser.match_count + 1 })
+                .update({ match_count: existingUser[0].match_count + 1 })
+
                 .eq('username', username)
                 .select();
 
